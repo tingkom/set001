@@ -1,0 +1,78 @@
+数据库安装步骤
+
+1、	安装java 1.6
+	1）、运行jdk-6u43-windows-i586.exe 进行安装。
+
+	2）、我在的电脑上点右键——属性——高级系统设置——高级里：
+
+		a）、在环境变量中添加<系统变量>：
+		变量：	CLASS_PATH
+		值：	.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar;%CATALINA_HOME%\lib\servlet-api.jar
+
+		b）、变量：	JAVA_HOME
+		值：	E:\Program Files\Java\jdk1.6.0_43    （此外要改为实际java安装路径）
+
+		c）、修改变量path ，在值的后面添加：
+
+		%JAVA_HOME%\bin;
+
+
+
+2、安装Tomcat
+	1)、解压apache-tomcat-6.0.44-windows-x86.rar
+
+	2）、将解压后文件夹<apache-tomcat-6.0.44-windows-x86>改为 < tomcat6 >，并复制粘贴到D:盘根目录下。
+
+	3）、修改环境变量：系统变量
+		添加变量：	CATALINA_HOME
+		值：		d:\tomcat6
+
+		修改变量path ，在值的后面添加：
+		%CATALINA_HOME%\bin;
+	4)、将cargo_1004复制到d:\tomcat6\webapps\下
+
+
+
+3、安装mysql
+	1)、解压 mysql-5.6.26-win32.rar
+	2)、将解压后文件夹<mysql-5.6.26-win32>改为 < mysql-5.6.26 >，并复制粘贴到D:盘根目录下
+	3)、用程序包里的my-default.ini替换 D:\mysql-5.6.26\my-default.ini文件
+	4)、修改变量path ，在值的后面添加：
+		D:\mysql-5.6.26\bin;
+	4)、运行cmd
+		
+		cd D:\mysql-5.6.26\bin
+		d:
+		mysqld --install mysql --defaults-file="D:\mysql-5.6.26\my-init.ini"
+		
+	启动mysql：
+		net start mysql
+	————————————————
+
+	如果装错了，删除服务
+
+	mysqld --remove MySQL
+
+
+4、运行Navicat for Mysql
+	1)、建立连接
+		localhost:3306
+		root
+	密码：空
+	2）、修改权限
+		新建查询：
+		update user set password=password("123456") where user='root';
+		flush privileges;
+	3)、新建数据库drawback01
+	4)、运行drawback01.sql
+
+
+5)运行tomcat
+	进入d:\tomcat6\bin 目录，运行：startup.bat
+
+
+6)在本机上下载安装chrome浏览器， 打开地址：
+	localhost:8080/cargo_1004/admin/index.jsp
+	
+	
+	
